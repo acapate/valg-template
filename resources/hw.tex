@@ -1,0 +1,54 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage{latexsym}
+\usepackage{amssymb,amsmath,amsthm}
+
+\usepackage{pseudocode}
+\def\pfi{\relax}
+
+\usepackage{algorithm}
+\usepackage[noend]{algorithmic}
+
+\usepackage{algorithmicext}
+
+\newconstruct{\ON}{\textbf{on}}{\textbf{do}}{\ENDON}{\textbf{end on}}
+%\newconstruct{\UPON}{\textbf{upon}}{\textbf{do}}{\ENDUPON}{\textbf{end upon}}
+
+\renewcommand{\algorithmiccomment}[1]{ /\!/ #1}
+\newconstruct{\PROC}{\textbf{procedure}}{}{\ENDPROC}{\textbf{end on}}
+\newconstruct{\PRED}{\textbf{predicate}}{}{\ENDPRED}{\textbf{end on}}
+\newconstruct{\FUNC}{\textbf{function}}{}{\ENDFUNC}{\textbf{end on}}
+
+
+%
+% Generic stuff for inclusion exercise file -- do not change
+%
+\newtheorem{exc}{Exercise}
+\newenvironment{Exc}[1]{\begin{exc}{\normalfont #1}}{\end{exc}}
+
+\newcommand{\homework}{\homeworknumber\ (Ch. \homeworkchapter)}
+
+\newboolean{firstpage}
+\setboolean{firstpage}{false}
+\ifcsname mkfirstpage\endcsname
+    \setboolean{firstpage}{true}
+\fi
+
+\input{firstpage.tex}
+
+\newpage
+
+\section*{Homework~\homework}
+
+% Fill in your proofs via the proof environment
+% \begin{proof}
+% ...
+% \end{proof}
+% after every exercise in the following file:
+
+\input{../hw\homeworknumber/ex\homeworknumber.tex}
+
+\end{document}
+\endinput

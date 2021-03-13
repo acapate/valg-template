@@ -1,0 +1,29 @@
+% PSEUDOCODE Style
+% (c) Martin Biely<martin@mars.tuwien.ac.at>
+% PSEUDOCODE a simple style for writing distributed algorithms
+% in pseudocode. 
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pseudocode}
+
+\typeout{(c) 2000 martin@mars.tuwien.ac.at All rites reversed.}
+
+\newcommand{\pfor}[3]{{\bf for} #1\ensuremath{:=}#2 {\bf to} #3 {\bf do} }
+\newcommand{\pdone}{\bf done}
+\newcommand{\pif}[1]{{\bf if} #1 {\bf then}}
+\newcommand{\pelse}[1][]{{\bf else} #1}
+\newcommand{\pfi}{{\bf fi}}
+\newcommand{\pbegin}{{\bf begin}}
+\newcommand{\pend}{{\bf end}}
+\newcommand{\pcomment}[1]{{\em /* #1 */}}
+\newcommand{\pdeftab}{\ \ \ \ \ \ \ \ \=\ \ \ \ \ \ \ \ \=\ \ \ \ \ \ \ \ \=\kill}
+%\newcommand{\pcmd}[2]{\ensuremath{\mathbf{#1}(#2)}}
+\newcommand{\pcmd}[2]{{\bf #1}($#2$)}
+\newcommand{\pop}[1]{{\bf #1}}
+\newcommand{\pnum}[1]{\ensuremath{|\{#1\}|}}
+\newcommand{\snd}[1]{\pcmd{send}{#1}}
+\newcommand{\rcv}[1]{\pcmd{receive}{#1}}
+
+\newcommand{\sendtoall}[1]{{\snd{#1} {\bf to all nodes} [{\em including itself\/}]}}
+\newcommand{\bcast}[1]{\pcmd{broadcast}{#1}}
+\newcommand{\rcvfromall}[1]{{\rcv{#1} {\bf from all nodes}}}

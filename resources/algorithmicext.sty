@@ -1,0 +1,80 @@
+% algorithmicext.sty: Extensions to the algorithmic style
+% Copyright (C) 2005 Martin Biely <biely@ecs.tuwien.ac.at>
+
+% This program is free software; you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation; either version 2 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{algorithmicext}[2005/09/15]
+\typeout{Extensions to the `algorithmic' Style}
+
+\newif\if@nodefaults
+\@nodefaultsfalse
+\DeclareOption{nodefaults}{
+  \@nodefaultstrue
+}
+\DeclareOption{noend}{\PassOptionsToPackage{noend}{algorithmic}}
+
+\ProcessOptions
+
+\RequirePackage{algorithmic}
+\RequirePackage{ifthen}
+
+\newcommand{\EMPTY}{\item[]}
+\newcommand{\TAG}[1]{\item[#1]}
+\newcommand{\newlinetag}[3]{\newcommand{#1}[#2]{\item[#3]}}
+\newcommand{\newconstruct}[5]{%
+  \newenvironment{ALC@\string#1}{\begin{ALC@g}}{\end{ALC@g}}
+   \newcommand{#1}[2][default]{\ALC@it#2\ ##2\ #3%
+     \ALC@com{##1}\begin{ALC@\string#1}}
+   \ifthenelse{\boolean{ALC@noend}}{
+     \newcommand{#4}{\end{ALC@\string#1}}
+   }{
+     \newcommand{#4}{\end{ALC@\string#1}\ALC@it#5}
+   } 
+}
+
+\newcommand{\ALCEXT@linenosize}{\small}
+\newcommand{\ALCEXT@linenofont}{\rm}
+\newcommand{\renew@ALC@linenosize}{\renewcommand{\ALC@linenosize}{\ALCEXT@linenosize\ALCEXT@linenofont}}
+\newcommand{\setlinenosize}[1]{\renewcommand{\ALCEXT@linenosize}{#1}\renew@ALC@linenosize}
+\newcommand{\setlinenofont}[1]{\renewcommand{\ALCEXT@linenofont}{#1}\renew@ALC@linenosize}
+
+\renew@ALC@linenosize
+\renewcommand{\ALC@linenodelimiter}{:}
+
+
+\newcounter{ALCEXT@lineno}
+
+\let\ALCEXT@endalgorithmic=\endalgorithmic
+\def\endalgorithmic{\setcounter{ALCEXT@lineno}{\value{ALC@line}}\ALCEXT@endalgorithmic}
+\def\continuecounting{\setcounter{ALC@line}{\value{ALCEXT@lineno}}}
+\newcommand{\continuecountingafter}[1]{\setcounter{ALC@line}{#1}}
+
+%%\let\ALCEXT@algorithmic=\algorithmic    
+%% \def\ALCEXT@algorithmicX[#1]{
+%%   \ALCEXT@algorithmic[#1]
+%%   \setcounter{ALC@line}{\value{ALCEXT@lineno}}
+%% }
+%% \def\algorithmic{
+%%   \@ifnextchar[%]
+%%     {\ALCEXT@algorithmicX}
+%%     {\ALCEXT@algorithmicX[0]}
+%% }
+
+\if@nodefaults\else
+\newconstruct{\UPON}{\textbf{upon}}{\textbf{do}}
+	{\ENDUPON}{\algorithmicend\ \textbf{upon}}
+\newconstruct{\LET}{\textbf{let}}{\textbf{in}}
+	{\ENDLET}{\algorithmicend\ \textbf{let}}
+\newlinetag{\CODE}{1}{\textrm{Code for processes #1:}}
+\newlinetag{\TASX}{0}{\textbf{Task}}
+\newlinetag{\VARIABLES}{0}{\textbf{Variables:}}
+\fi

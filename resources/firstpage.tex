@@ -1,0 +1,128 @@
+%
+% First page for homework assignments, included by hw.tex
+%
+% Definitions:
+
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{defin}{Definition}
+\newtheorem{cor}{Corollary}
+
+
+\newcommand{\M}{{\cal M}}
+\newcommand{\I}{{\cal I}}
+\newcommand{\T}{{\cal T}}
+\newcommand{\C}{{\cal C}}
+\newcommand{\SY}{{\cal S}}
+
+\newcommand{\outbuf}{\mbox{\em outbuf}}
+\newcommand{\inbuf}{\mbox{\em inbuf}}
+\newcommand{\comp}{\mbox{comp}}
+\newcommand{\del}{\mbox{del}}
+\newcommand{\exec}{\mbox{exec}}
+\newcommand{\emn}[1]{{\em #1\/}}
+\newcommand{\true}{\mbox{true}}
+\newcommand{\false}{\mbox{false}}
+
+\newcommand{\si}[1]{\stackrel{#1}{\sim}}
+\newcommand{\hb}[1]{\stackrel{#1}{\to}}
+
+\newcommand{\parent}{\mbox{\em parent}}
+\newcommand{\children}{\mbox{\em children}}
+\newcommand{\terminated}{\mbox{\em terminated}}
+
+\newcommand{\NIL}{\emptyset}
+\newcommand{\other}{\mbox{\em other}}
+\newcommand{\term}{\mbox{\em term}}
+\newcommand{\neighbors}{\mbox{\em neighbors}}
+\newcommand{\parmsg}{\langle\mbox{\em parent}\rangle}
+\newcommand{\rejmsg}{\langle\mbox{\em already}\rangle}
+
+\newcommand{\inweights}{\mbox{\em inweights}}
+\newcommand{\outweights}{\mbox{\em outweights}}
+\newcommand{\dist}{\mbox{\em dist}}
+\newcommand{\Corr}{\mbox{\em Corr}}
+
+\newcommand{\snewcommand}[2]{\ifthenelse{\isundefined{#1}}{\newcommand{#1}{#2}}{\renewcommand{#1}{#2}}}
+
+% --- For code line numbering
+\newcounter{LNR}%
+\newcommand{\NL}{\addtocounter{LNR}{1} \\ {\small\tt \theLNR} \> }
+% ----------------
+		
+\newenvironment{code}{%
+\setcounter{LNR}{1}%
+\begin{center}%
+\begin{tabbing} 
+\ \ \ \ \ \ \=\ \ \ \ \ \=\ \ \ \ \ \=\ \ \ \ \ \=\ \ \ \ \ \=\ \ \ \ \ \=\ \ \ \ \ \=\kill
+{\small\tt \theLNR} \>}
+{\\
+\end{tabbing}%
+\end{center}}
+
+
+% The document
+
+\begin{document}
+
+\ifthenelse{\boolean{firstpage}}
+{{\arraycolsep1mm
+\renewcommand{\arraystretch}{1.4}
+
+\begin{center}
+\begin{tabular}[t]{|c|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{ } & { } \\
+\multicolumn{3}{|p{9.3cm}|}{\large\bf Homework~\homework \par Distributed Algorithms (SS 2021) \par \normalsize \flushleft{\bf \today}  } &
+\multicolumn{1}{|p{3.5cm}|}{{\bf Grades:} \par \flushleft{\em Ex.} \flushleft{\hspace*{1.5cm}\em Pres.:} \flushleft{\hspace*{1.5cm}\em Rev1:} \flushleft{\hspace*{1.5cm}\em Rev2:} \flushleft{\hspace*{1.5cm}\em Grade:}} \\
+\multicolumn{3}{|c|}{ } & { } \\
+\hline
+{\em Kennnr.} & {\em Matrikelnr.} & {\em Name} & {\em Vorname} \\
+\hline
+{\bf 000} & {\bf 0000000} & {\bf Muster} & {\bf Thomas} \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\vspace{1cm}
+
+\noindent
+{\bf Used Resources/Collaborations:}
+
+\medskip
+
+Please list below all sources (people, books, webpages, etc.)---except 
+textbook and slides---consulted for this 
+assignment: 
+
+\noindent
+\input{../hw\homeworknumber/sources}
+
+\bigskip
+
+I certify that I have listed above all the sources that I 
+consulted regarding this assignment (besides textbook, slides and lecturer), and that I have not 
+received or given any assistance that is contrary to the 
+spirit of the collaboration guidelines for this assignment
+set forth in the course webpage:
+
+{\em Discussion of concepts/solutions with others is encouraged, but
+all work must be done on your own and written up in 
+your own words, unless otherwise instructed. If you 
+use any source other than the textbook and the slides, reference 
+it/him/her, whether it be a person, a book, a solution set, 
+a web page or whatever.}
+
+\bigskip
+
+\noindent
+\begin{tabular}[t]{|r|p{7cm}|}
+\hline
+{\bf Signature:} &\\
+\hline
+{\bf Date:} &\\
+\hline
+\end{tabular}
+}}
+{}
